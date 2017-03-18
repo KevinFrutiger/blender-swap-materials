@@ -1,5 +1,11 @@
 import bpy
 
+# render material name : export material name
+material_lookup = {
+    'plane_body_mat': 'plane_body_mat_export',
+    'tire_mat': 'tire_mat_export',
+}
+
 
 def get_objects_from_material_name(material_name):
         
@@ -13,28 +19,25 @@ def get_objects_from_material_name(material_name):
     return objects
 
 
+def set_material_for_objects(objects, new_mat_name):
+    for ob in objects:
+        ob.data.materials[0] = bpy.data.materials[new_mat_name]
+
+
 class ChangeToRenderMaterial(bpy.types.Operator):
-    """Change to material for rendering/baking"""
+    """Change to materials for rendering/baking"""
     
     bl_label = 'Change to render materials'
     bl_idname = 'materials.change_to_render_material'
     bl_options = {'REGISTER', 'UNDO'}
     
-    suffix = '_export'
-    
     def execute(self, context):
         
-        objects_to_change = {
-            'plane_body_mat' + self.suffix: 
-            get_objects_from_material_name('plane_body_mat' + self.suffix),
-            'tire_mat' + self.suffix: 
-            get_objects_from_material_name('tire_mat' + self.suffix)
-        }
-        
-        for material_name in objects_to_change:
-            for ob in objects_to_change[material_name]:
-                new_material_name = material_name[:-len(self.suffix)]
-                ob.data.materials[0] = bpy.data.materials[new_material_name]
+        for render_mat_name, export_mat_name in material_lookup.items():
+            set_material_for_objects(
+                get_objects_from_material_name(export_mat_name),
+                render_mat_name
+            )
         
         return {'FINISHED'}
 
@@ -46,25 +49,20 @@ class ChangeToExportMaterial(bpy.types.Operator):
     bl_idname = 'materials.change_to_export_material'
     bl_options = {'REGISTER', 'UNDO'}
     
-    suffix = '_export'
-    
     def execute(self, context):
         
-        objects_to_change = {
-            'plane_body_mat': get_objects_from_material_name('plane_body_mat'),
-            'tire_mat': get_objects_from_material_name('tire_mat')
-        }
-        
-        for material_name in objects_to_change:
-            for ob in objects_to_change[material_name]:
-                new_material_name = material_name + self.suffix
-                ob.data.materials[0] = bpy.data.materials[new_material_name]
+        for render_mat_name, export_mat_name in material_lookup.items():
+            set_material_for_objects(
+                get_objects_from_material_name(render_mat_name),
+                export_mat_name
+            )
         
         return {'FINISHED'}
 
 
 class SwapMaterialPanel(bpy.types.Panel):
     """Panel for swapping materials for export to Altspace"""
+    
     bl_label = 'Swap Materials'
     bl_idname = 'render_pt_swap_material_panel'
     bl_space_type = 'PROPERTIES'
