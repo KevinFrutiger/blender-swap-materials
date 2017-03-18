@@ -16,7 +16,7 @@ def get_objects_from_material_name(material_name):
 class ChangeToRenderMaterial(bpy.types.Operator):
     """Change to material for rendering/baking"""
     
-    bl_label = 'Change to render material'
+    bl_label = 'Change to render materials'
     bl_idname = 'materials.change_to_render_material'
     bl_options = {'REGISTER', 'UNDO'}
     
