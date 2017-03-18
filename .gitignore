@@ -1,0 +1,5 @@
+# Blender files and backups
+*.blend*
+
+# Shortcuts
+*.lnk
