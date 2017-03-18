@@ -7,3 +7,6 @@
 # Images
 *.png
 *.jpg
+
+# Testing assets
+testing_assets/
