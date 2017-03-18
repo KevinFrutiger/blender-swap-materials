@@ -1,5 +1,6 @@
 import bpy
 
+# Lookup for render materials and export materials
 # render material name : export material name
 material_lookup = {
     'plane_body_mat': 'plane_body_mat_export',
@@ -8,7 +9,8 @@ material_lookup = {
 
 
 def get_objects_from_material_name(material_name):
-        
+    """Returns all objects in the current scene that have the material name"""
+    
     objects = []
         
     for ob in bpy.context.scene.objects:
@@ -20,6 +22,8 @@ def get_objects_from_material_name(material_name):
 
 
 def set_material_for_objects(objects, new_mat_name):
+    """Sets the first material of the objects to the new material."""
+    
     for ob in objects:
         ob.data.materials[0] = bpy.data.materials[new_mat_name]
 
@@ -85,8 +89,8 @@ def register():
 
 
 def unregister():
-    bpy.utils.register_class(ChangeToRenderMaterial)
-    bpy.utils.regsiter_class(ChangeToExportMaterial)
+    bpy.utils.unregister_class(ChangeToRenderMaterial)
+    bpy.utils.unregsiter_class(ChangeToExportMaterial)
     bpy.utils.unregister_class(SwapMaterialPanel)
 
 
