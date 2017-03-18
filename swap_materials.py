@@ -21,7 +21,7 @@ def get_objects_from_material_name(material_name):
     return objects
 
 
-def set_material_for_objects(objects, new_mat_name):
+def assign_material_to_objects(objects, new_mat_name):
     """Sets the first material of the objects to the new material."""
     
     for ob in objects:
@@ -38,7 +38,7 @@ class ChangeToRenderMaterial(bpy.types.Operator):
     def execute(self, context):
         
         for render_mat_name, export_mat_name in material_lookup.items():
-            set_material_for_objects(
+            assign_material_to_objects(
                 get_objects_from_material_name(export_mat_name),
                 render_mat_name
             )
@@ -56,7 +56,7 @@ class ChangeToExportMaterial(bpy.types.Operator):
     def execute(self, context):
         
         for render_mat_name, export_mat_name in material_lookup.items():
-            set_material_for_objects(
+            assign_material_to_objects(
                 get_objects_from_material_name(render_mat_name),
                 export_mat_name
             )
