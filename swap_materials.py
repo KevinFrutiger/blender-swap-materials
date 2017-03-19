@@ -38,10 +38,23 @@ class ChangeToRenderMaterial(bpy.types.Operator):
     def execute(self, context):
         
         for render_mat_name, export_mat_name in material_lookup.items():
-            assign_material_to_objects(
-                get_objects_from_material_name(export_mat_name),
-                render_mat_name
-            )
+            objects = get_objects_from_material_name(export_mat_name)
+            
+            if len(objects) == 0:
+                self.report(
+                    {'WARNING'}, 
+                    'No objects to assign {}'.format(render_mat_name)
+                )
+                continue
+            else:
+                self.report(
+                    {'INFO'}, 
+                    'Assigning {} to {} objects'.format(
+                        render_mat_name, len(objects)
+                    )
+                )
+            
+                assign_material_to_objects(objects, render_mat_name)
         
         return {'FINISHED'}
 
@@ -56,10 +69,23 @@ class ChangeToExportMaterial(bpy.types.Operator):
     def execute(self, context):
         
         for render_mat_name, export_mat_name in material_lookup.items():
-            assign_material_to_objects(
-                get_objects_from_material_name(render_mat_name),
-                export_mat_name
-            )
+            objects = get_objects_from_material_name(render_mat_name)
+            
+            if len(objects) == 0:
+                self.report(
+                    {'WARNING'}, 
+                    'No objects to assign {}'.format(export_mat_name)
+                )
+                continue
+            else:
+                self.report(
+                    {'INFO'}, 
+                    'Assigning {} to {} objects'.format(
+                        export_mat_name, len(objects)
+                    )
+                )
+            
+                assign_material_to_objects(objects, export_mat_name)
         
         return {'FINISHED'}
 
