@@ -48,10 +48,9 @@ class ChangeToRenderMaterial(bpy.types.Operator):
                 continue
             else:
                 self.report(
-                    {'INFO'}, 
-                    'Assigning {} to {} objects'.format(
-                        render_mat_name, len(objects)
-                    )
+                    {'INFO'}, 'Assigning {} to {} objects'.format(
+                                  render_mat_name, len(objects)
+                               )
                 )
             
                 assign_material_to_objects(objects, render_mat_name)
@@ -79,10 +78,9 @@ class ChangeToExportMaterial(bpy.types.Operator):
                 continue
             else:
                 self.report(
-                    {'INFO'}, 
-                    'Assigning {} to {} objects'.format(
-                        export_mat_name, len(objects)
-                    )
+                    {'INFO'}, 'Assigning {} to {} objects'.format(
+                                  export_mat_name, len(objects)
+                              )
                 )
             
                 assign_material_to_objects(objects, export_mat_name)
