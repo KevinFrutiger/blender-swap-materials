@@ -5,7 +5,7 @@ import bpy
 
 # Lookup for render materials and export materials
 # render material name : export material name
-material_lookup = {
+MATERIAL_LOOKUP = {
     'plane_body_mat': 'plane_body_mat_export',
     'tire_mat': 'tire_mat_export',
 }
@@ -49,7 +49,7 @@ class ChangeToRenderMaterial(bpy.types.Operator):
     
     def execute(self, context):
         
-        for render_mat_name, export_mat_name in material_lookup.items():
+        for render_mat_name, export_mat_name in MATERIAL_LOOKUP.items():
             objects = get_objects_from_material_name(export_mat_name)
             
             if len(objects) == 0:
@@ -79,7 +79,7 @@ class ChangeToExportMaterial(bpy.types.Operator):
     
     def execute(self, context):
         
-        for render_mat_name, export_mat_name in material_lookup.items():
+        for render_mat_name, export_mat_name in MATERIAL_LOOKUP.items():
             objects = get_objects_from_material_name(render_mat_name)
             
             if len(objects) == 0:
