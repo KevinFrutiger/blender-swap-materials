@@ -15,7 +15,7 @@ def get_objects_from_material_name(material_name):
     """Return all objects in the current scene that have the material name.
     
     Keyword arguments:
-    material_name -- the name of the material for which to get objects
+    material_name -- the name of the material to get objects from
     """
     
     objects = []
@@ -60,9 +60,10 @@ class ChangeToRenderMaterial(bpy.types.Operator):
                 continue
             else:
                 self.report(
-                    {'INFO'}, 'Assigning {} to {} objects'.format(
-                                  render_mat_name, len(objects)
-                               )
+                    {'INFO'}, 
+                    'Assigning {} to {} objects'.format(
+                        render_mat_name, len(objects)
+                    )
                 )
             
                 assign_material_to_objects(objects, render_mat_name)
@@ -90,9 +91,10 @@ class ChangeToExportMaterial(bpy.types.Operator):
                 continue
             else:
                 self.report(
-                    {'INFO'}, 'Assigning {} to {} objects'.format(
-                                  export_mat_name, len(objects)
-                              )
+                    {'INFO'}, 
+                    'Assigning {} to {} objects'.format(
+                        export_mat_name, len(objects)
+                    )
                 )
             
                 assign_material_to_objects(objects, export_mat_name)
