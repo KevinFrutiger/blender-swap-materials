@@ -1,3 +1,6 @@
+__author__ = 'Kevin Frutiger'
+__version__ = '0.1.0'
+
 import bpy
 
 # Lookup for render materials and export materials
@@ -9,7 +12,11 @@ material_lookup = {
 
 
 def get_objects_from_material_name(material_name):
-    """Returns all objects in the current scene that have the material name"""
+    """Return all objects in the current scene that have the material name.
+    
+    Keyword arguments:
+    material_name -- the name of the material for which to get objects
+    """
     
     objects = []
         
@@ -22,7 +29,12 @@ def get_objects_from_material_name(material_name):
 
 
 def assign_material_to_objects(objects, new_mat_name):
-    """Sets the first material of the objects to the new material."""
+    """Set the first material of the objects to the new material.
+    
+    Keyword arguments:
+    objects -- a list of objects to assign the new material to
+    new_mat_name -- the name of the material to assign to the objects
+    """
     
     for ob in objects:
         ob.data.materials[0] = bpy.data.materials[new_mat_name]
@@ -59,7 +71,7 @@ class ChangeToRenderMaterial(bpy.types.Operator):
 
     
 class ChangeToExportMaterial(bpy.types.Operator):
-    """Change to materials for export"""
+    """Change to materials for export."""
     
     bl_label = 'Change to export materials'
     bl_idname = 'materials.change_to_export_material'
@@ -89,7 +101,7 @@ class ChangeToExportMaterial(bpy.types.Operator):
 
 
 class SwapMaterialPanel(bpy.types.Panel):
-    """Panel for swapping materials for export to Altspace"""
+    """Panel for swapping materials for baking/exporting."""
     
     bl_label = 'Swap Materials'
     bl_idname = 'render_pt_swap_material_panel'
