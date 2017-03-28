@@ -11,7 +11,7 @@ This is a [Blender](https://www.blender.org/) script that creates a panel used t
 
 1. Create separate materials for baking and export as needed.
   * Be sure to toggle the Fake User button for the material. This module doesn't set it and the "other" material will most likely end up with no users, being disgarded when you save the Blender file.
-2. Load swap_materials.py in Blender (see [Text Editor] (https://docs.blender.org/manual/en/dev/editors/text_editor.html) )
+2. Load swap_materials.py in Blender. See [Text Editor] (https://docs.blender.org/manual/en/dev/editors/text_editor.html).
 3. Modify the MATERIAL_LOOKUP variable with the names of all the render/export materials
 ```
 MATERIAL_LOOKUP = {
