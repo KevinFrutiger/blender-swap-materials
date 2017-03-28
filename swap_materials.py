@@ -1,9 +1,7 @@
 """Swap Materials Panel
 
 This module creates a panel in Blender under the Render properties that allows
-swapping of the first material on objects. Note that having the material in any
-slot will cause a match, but the new material will only be assigned to the first
-one.
+swapping of the first material on objects.
 
 To use:
     (If you haven't already, create separate materials for baking and exporting)
@@ -38,9 +36,8 @@ MATERIAL_LOOKUP = {
 
 
 def get_objects_from_material_name(material_name):
-    """Return all objects in the current scene that have the material name.
-
-    The material will match if the name exists in any slot.
+    """Return all objects in the current scene that have the material name as
+    their first material.
 
     Keyword arguments:
     material_name -- the name of the material to get objects from
@@ -51,7 +48,9 @@ def get_objects_from_material_name(material_name):
     # Get all objects in the scene that use this material.
     for obj in bpy.context.scene.objects:
         if (hasattr(obj.data, 'materials')
-                and material_name in obj.data.materials):
+                and len(obj.data.materials) > 0
+                and obj.data.materials[0].name == material_name):
+
             objects.append(obj)
 
     return objects
