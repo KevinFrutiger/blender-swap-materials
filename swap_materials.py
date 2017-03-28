@@ -27,7 +27,7 @@ __version__ = '0.1.0'
 import bpy
 
 
-# 'render material name' : 'export material name'
+# 'render_material_name' : 'export_material_name'
 MATERIAL_LOOKUP = {
     'plane_body_mat': 'plane_body_mat_export',
     'tire_mat': 'tire_mat_export',
