@@ -22,7 +22,7 @@ Warning:
 """
 
 __author__ = 'Kevin Frutiger'
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 import bpy
 
@@ -148,7 +148,7 @@ class SwapMaterialPanel(bpy.types.Panel):
     def draw(self, context):
         layout = self.layout
 
-        layout.label('Change the assigned materials:')
+        layout.label(text='Change the assigned materials:')
         layout.operator(ChangeToRenderMaterial.bl_idname)
         layout.operator(ChangeToExportMaterial.bl_idname)
 

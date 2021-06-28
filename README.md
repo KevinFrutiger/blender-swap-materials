@@ -2,6 +2,8 @@
 
 This is a [Blender](https://www.blender.org/) script that creates a panel used to swap materials, primarily intended for swapping between materials for texture baking and export.
 
+Last tested with Blender 2.93.1
+
 ## Installation
 
 1. Download the .zip file or clone the repository.
