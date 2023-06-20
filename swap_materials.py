@@ -11,6 +11,8 @@ To use:
     3. Run Script.
     4. A panel title 'Swap Materials' should be in the Render properties.
     5. Click the appropriate button to change to render or export materials.
+    
+You'll need to interact with any 3D Viewports to see the updated material on your model(s).
 
 Warning:
     Be sure to turn on the Fake User toggle for the materials so the unassigned
@@ -22,15 +24,15 @@ Warning:
 """
 
 __author__ = 'Kevin Frutiger'
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 import bpy
 
 
 # 'render_material_name' : 'export_material_name'
 MATERIAL_LOOKUP = {
-    'plane_body_mat': 'plane_body_mat_export',
-    'tire_mat': 'tire_mat_export',
+    'red_mat': 'blue_mat',
+    'green_mat': 'yellow_mat',
 }
 """Lookup for materials to be swapped, by name."""
 

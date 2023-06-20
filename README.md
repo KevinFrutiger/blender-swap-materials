@@ -22,9 +22,9 @@ MATERIAL_LOOKUP = {
 }
 ```
 4. **Run Script**
-  * You'll need to do this every time you open the Blender file, unless you check on the *Register* option located at the bottom of the Text Editor
-5. You should see a **Swap Materials** panel at the bottom of the Render Properties
-6. Use the buttons to swap between materials
+  * You'll need to do this every time you open the Blender file, unless you check on the *Register* option located at the bottom of the Text Editor.
+5. You should see a **Swap Materials** panel at the bottom of the Render Properties.
+6. Use the buttons to swap between materials.
 
 You'll need to interact with any 3D Viewports to see the updated material on your model(s).
 
